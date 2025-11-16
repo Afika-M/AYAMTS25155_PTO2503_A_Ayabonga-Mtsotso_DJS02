@@ -43,6 +43,23 @@ class podcastCard extends HTMLElement {
     const formattedDate = updated ? DateUtils.format(updated) : "";
 
     this.shadowRoot.innerHTML = `
+      <style>
+        .card {
+          background: white;
+          padding: 1rem;
+          border-radius: 8px;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+          cursor: pointer;
+          transition: transform 0.2s;
+        }
+        .card:hover { transform: scale(1.02); }
+        img { width: 100%; border-radius: 6px; }
+        h3 { margin: .5rem 0; font-size: 1rem; }
+        p { margin: 0; font-size: .8rem; color: #555; }
+        .tags { margin: .5rem 0; }
+        .tag { background: #eee; padding: .3rem .6rem; margin-right: .4rem; border-radius: 4px; display:inline-block; font-size: .8rem;}
+        .updated { font-size: .8rem; color: #555; margin-top: .5rem;}
+      </style>
       <div class="card" role="button" tabindex="0">
         <img src="${image}" alt="${title} cover" />
         <h3>${title}</h3>
