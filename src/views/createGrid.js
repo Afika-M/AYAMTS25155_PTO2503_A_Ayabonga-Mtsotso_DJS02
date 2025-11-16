@@ -17,13 +17,18 @@ export const createGrid = () => {
     render(podcastList) {
       container.innerHTML = "";
       podcastList.forEach((p) => {
-        const card = createPodcastCard(p, createModal.open);
+        const card = document.createElement("podcast-card");
+        card.setAttribute("podcastid", p.id);
+        card.setAttribute("title", p.title);
+        card.setAttribute("image", p.image);
+        card.setAttribute("seasons", p.seasons);
+        card.setAttribute("updated", p.updated);
+        card.setAttribute("genres", p.genres.join(","));
 
+        card.addEventListener("podcast-selected", () => {
+          createModal.open(p);
+        });
 
-
-
-
-        
         container.appendChild(card);
       });
     },
